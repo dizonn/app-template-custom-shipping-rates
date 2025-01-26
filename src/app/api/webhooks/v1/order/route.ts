@@ -3,7 +3,7 @@ import { type NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
   let result = wixAppClient.webhooks.getRegisteredEvents();
-  console.log('Active Webhooks:' + result);
+  console.log('Active Webhooks:' + JSON.stringify(result));
   console.info(
     'Webhook::order accepted - called. Body: ' +
       JSON.stringify(request.body) +
