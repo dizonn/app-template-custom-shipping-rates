@@ -51,7 +51,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - uses: ./.github/actions/setup-playwright
       - name: Waiting for 200 from the Netlify Preview
         if: ${{ !github.event.inputs.deploymentUrl }}
