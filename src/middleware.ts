@@ -3,6 +3,8 @@ import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   const headers = request.headers;
+  console.log('Headers: ' + JSON.stringify(headers));
+  console.log('Body: ' + JSON.stringify(request.body));
   if (request.nextUrl.searchParams.get('accessToken')) {
     headers.set('Authorization', request.nextUrl.searchParams.get('accessToken')!);
   }
