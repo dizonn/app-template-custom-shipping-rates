@@ -8,13 +8,6 @@ export async function POST(request: NextRequest) {
       ' Headers: ' +
       JSON.stringify(request.headers),
   );
-  const { eventType, instanceId, payload } = await wixAppClient.webhooks.processRequest(request);
-
-  console.info('Webhook::order accepted - input is:', {
-    eventType,
-    instanceId,
-    payload,
-  });
 
   return new Response('OK', {
     status: 200,
