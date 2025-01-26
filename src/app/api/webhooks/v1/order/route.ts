@@ -2,7 +2,12 @@ import { wixAppClient } from '@/app/utils/wix-sdk.app';
 import { type NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  console.info('Webhook::order accepted - called. Input: ' + JSON.stringify(request));
+  console.info(
+    'Webhook::order accepted - called. Body: ' +
+      JSON.stringify(request.body) +
+      ' Headers: ' +
+      JSON.stringify(request.headers),
+  );
   const { eventType, instanceId, payload } = await wixAppClient.webhooks.processRequest(request);
 
   console.info('Webhook::order accepted - input is:', {
