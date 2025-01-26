@@ -2,14 +2,10 @@ import { wixAppClient } from '@/app/utils/wix-sdk.app';
 import { type NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  let result = wixAppClient.webhooks.getRegisteredEvents();
-  console.log('Active Webhooks:' + JSON.stringify(result));
-  console.info(
-    'Webhook::order accepted - called. Body: ' +
-      JSON.stringify(request.body) +
-      ' Headers: ' +
-      JSON.stringify(request.headers),
-  );
+  const body = await request.json();
+  console.log('Body here:' + JSON.stringify(body));
+  console.log('Headers here: ' + [...request.headers.entries()]);
+  console.log('Active Webhooks:' + [...wixAppClient.webhooks.getRegisteredEvents().keys()]);
 
   return new Response('OK', {
     status: 200,
