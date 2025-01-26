@@ -2,8 +2,8 @@ import { wixAppClient } from '@/app/utils/wix-sdk.app';
 import { type NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  console.log('Body here:' + JSON.stringify(body));
+  const body = await request.text();
+  console.log('Body here:' + body);
   // @ts-ignore
   console.log('Headers here: ' + [...request.headers.entries()]);
   // @ts-ignore

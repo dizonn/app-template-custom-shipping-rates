@@ -5,8 +5,8 @@ export async function middleware(request: NextRequest) {
   const headers = request.headers;
   // @ts-ignore
   console.log('Headers: ' + [...request.headers.entries()]);
-  const body = await request.json();
-  console.log('Body: ' + JSON.stringify(body));
+  const body = await request.text();
+  console.log('Body: ' + body);
   if (request.nextUrl.searchParams.get('accessToken')) {
     headers.set('Authorization', request.nextUrl.searchParams.get('accessToken')!);
   }
