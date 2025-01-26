@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   const headers = request.headers;
+  // @ts-ignore
   console.log('Headers: ' + [...request.headers.entries()]);
   const body = await request.json();
   console.log('Body: ' + JSON.stringify(body));
