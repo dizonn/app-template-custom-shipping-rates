@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
+  console.log('Request url: ', request.url);
   const requestHeaders = new Headers(request.headers);
   // @ts-ignore
   if (request.nextUrl.searchParams.get('accessToken')) {
