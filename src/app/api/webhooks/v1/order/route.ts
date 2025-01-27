@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
   const body = await request.text();
   console.log('Body here:' + body);
-  console.log('JWT here:' + decodeJwt(body));
+  console.log('JWT here:' + JSON.stringify(decodeJwt(body)));
   // @ts-ignore
   console.log('Headers here: ' + [...request.headers.entries()]);
   // @ts-ignore
