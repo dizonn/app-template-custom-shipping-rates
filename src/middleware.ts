@@ -2,16 +2,16 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
-  const headers = request.headers;
+  const requestHeaders = new Headers(request.headers);
   // @ts-ignore
-  console.log('Headers: ' + [...request.headers.entries()]);
-  const body = await request.text();
-  console.log('Body: ' + body);
   if (request.nextUrl.searchParams.get('accessToken')) {
-    headers.set('Authorization', request.nextUrl.searchParams.get('accessToken')!);
+    requestHeaders.set('Authorization', request.nextUrl.searchParams.get('accessToken')!);
   }
   return NextResponse.next({
-    headers,
+    request: {
+      // New request headers
+      headers: requestHeaders,
+    },
   });
 }
 
